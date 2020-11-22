@@ -1,0 +1,22 @@
+button{
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 80%;
+    line-height: 1.5;
+    border-radius: 5px;
+    margin: 5px 0px;
+}
+
+.form{
+    width: 60%;
+    border-radius: 30px;
+}
+
+.textarea{
+    margin-top: 100px;
+    width: 100%;
+    font-size: 100%;
+    border: 1px solid lightgray;
+    padding: 5px 5px;
+}

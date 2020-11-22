@@ -56,3 +56,12 @@ export const fetchCountries = async() => {
         console.log(error);
     }
 }
+
+export const fetchPosts = async() => {
+    try{
+        const response = await axios.get('http://localhost:3000/posts');
+        return response.data;
+    }catch(error){
+        console.log(error);
+    }
+}
