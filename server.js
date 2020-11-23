@@ -6,19 +6,22 @@ const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv/config'); // For privacy use
 
+
+//To Client
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
+
+
 //Import Routes
 const postsRoute = require('./routes/posts');
 
 //Middlewares
 /* whenever goes to the link specified in use, it will run the
 following middleware function */
-
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-    })
-}
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/posts', postsRoute);
