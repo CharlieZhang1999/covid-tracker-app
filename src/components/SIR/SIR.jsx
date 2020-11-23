@@ -6,6 +6,7 @@ import { Line} from 'react-chartjs-2';
 
 import styles from './SIR.module.css';
 
+
 const SIRchart=()=>{
   const [dailyData, setDailyData] = useState({});
 
@@ -151,24 +152,24 @@ let SIRInput =(input)=>{
         <br/>
           <label>Population</label>
         <br/>
-          <input type="numer" name="Population" value={userInput.Population} onChange={handleChange}/>
+          <input className={styles.numer} type="numer" name="Population" value={userInput.Population} onChange={handleChange}/>
         <br/>
           <label>Confirmed(14 days ago)</label>
         <br/>
-          <input type="numer" name="Pre_confirmed" value={userInput.Pre_confirmed} onChange={handleChange}/>
+          <input className={styles.numer} type="numer" name="Pre_confirmed" value={userInput.Pre_confirmed} onChange={handleChange}/>
         <br/>
           <label>Confirmed(now)</label>
         <br/>
-          <input type="text" name="Confirmed" value={userInput.Confirmed} onChange={handleChange}/>
+          <input className={styles.numer} type="text" name="Confirmed" value={userInput.Confirmed} onChange={handleChange}/>
         <br/>
           <label>Recovered</label>
         <br/>
-          <input type="numer" name="Recovered" value={userInput.Recovered} onChange={handleChange}/>
+          <input className={styles.numer} type="numer" name="Recovered" value={userInput.Recovered} onChange={handleChange}/>
         <br/>
           <label>Deaths</label>
         <br/>
-          <input type="numer" name="Death" value={userInput.Death} onChange={handleChange}/>
-          <input type="submit" value="Submit" />
+          <input className={styles.numer} type="numer" name="Death" value={userInput.Death} onChange={handleChange}/>
+          <input className={styles.numer} type="submit" value="Submit" />
       </div>
   </form>)
 
@@ -184,22 +185,27 @@ let SIRInput =(input)=>{
           datasets: [{
             data: prediction.preconfirmed,
             label: 'Infected',
-            borderColor: '#3333ff',
+            backgroundColor: 'rgba(54, 162, 235, 0.4)',// CHANGED
+            borderColor: 'rgba(54, 162, 235, 0.6)',// CHANGED
             fill: true,
           }, {
             data: prediction.predeath,
             label: 'Deaths',
-            borderColor: 'red',
-            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 0.6)',// CHANGED
+            backgroundColor: 'rgba(255, 99, 132, 1)',// CHANGED
             fill: true,
           },  {
             data: prediction.prerecovered,
             label: 'Recovered',
-            borderColor: 'green',
-            backgroundColor: 'rgba(0, 255, 0, 0.5)',
+            borderColor: 'rgba(255, 206, 86, 0.6)',// CHANGED
+            backgroundColor: 'rgba(255, 206, 86, 0.8)',// CHANGED
             fill: true,
           },
           ],
+        }}
+        options={{
+          legend: { display: true, position:"right" },// CHANGED
+          title: { display: true, text:`SIR prediction with Customized Inputs`, fontSize:25},// CHANGED
         }}
       />
     ) : null
@@ -216,22 +222,27 @@ let SIRInput =(input)=>{
           datasets: [{
             data: USprediction.preconfirmed,
             label: 'Infected',
-            borderColor: '#3333ff',
+            backgroundColor: 'rgba(54, 162, 235, 0.4)',// CHANGED
+            borderColor: 'rgba(54, 162, 235, 0.6)',// CHANGED
             fill: true,
           }, {
             data: USprediction.predeath,
             label: 'Deaths',
-            borderColor: 'red',
-            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 0.6)',// CHANGED
+            backgroundColor: 'rgba(255, 99, 132, 1)',// CHANGED
             fill: true,
           },  {
             data: USprediction.prerecovered,
             label: 'Recovered',
-            borderColor: 'green',
-            backgroundColor: 'rgba(0, 255, 0, 0.5)',
+            borderColor: 'rgba(255, 206, 86, 0.6)',// CHANGED
+            backgroundColor: 'rgba(255, 206, 86, 0.8)',// CHANGED
             fill: true,
           },
           ],
+        }}
+        options={{
+          legend: { display: true, position:"right" },// CHANGED
+          title: { display: true, text:`SIR prediction for US(30days)`, fontSize:25},// CHANGED
         }}
       />
     ) : null
@@ -239,15 +250,30 @@ let SIRInput =(input)=>{
   
     return(
 
-        <div className={styles.container}>
-            <h2>SIR prediction for US(30days)</h2>
-            {USSIRChart}
-            <h2>SIR prediction with Customized Inputs</h2>
-            <div className={styles.inputs}>
-              {SIRForm}
-              {SIRChart}  
-            </div>  
+        // <div className={styles.container}>
+        //     {/* <h2>SIR prediction for US(30days)</h2> */}
+        //     {USSIRChart}
+        //     {/* <h2>SIR prediction with Customized Inputs</h2> */}
+        //     <div className={styles.inputs}>
+        //       {SIRForm}
+        //       {SIRChart}  
+        //     </div>  
             
+        // </div>
+
+        <div className={styles.container}>
+        <div style = {{borderRightColor:'rgba(84, 255, 204, 0.5)', borderRightStyle: "solid"}}>
+          {USSIRChart}
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod atque, cum tempore obcaecati, non quas corrupti autem repellendus dolore veritatis sed ullam alias quae nulla maiores eos laborum illo reiciendis.lere Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ratione praesentium itaque inventore obcaecati quaerat corrupti aliquam error optio doloribus. Eaque quae quia eos sapiente praesentium in placeat deleniti reiciendis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore facere impedit iste quibusdam quia nobis natus atque minima laudantium harum officia hic accusantium, suscipit ullam quaerat at quis aliquam ducimus.</p>
+        </div>
+        
+        
+        {SIRForm}
+        <div>
+          {SIRChart}
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptatum veritatis quos id necessitatibus beatae distinctio odit quia quo fugiat fugit molestiae, facilis vitae similique quidem aperiam optio laborum ipsum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis reprehenderit quidem recusandae esse dolor, aut quam dolores a error ea inventore adipisci, saepe odit numquam mollitia eligendi sit. Velit, voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quis maiores nihil non aspernatur et, dolores optio tenetur, vel voluptatum hic autem at. Voluptatibus labore error nisi doloremque aliquam. Voluptatibus?</p>
+        </div>
+    
         </div>
         
     )
