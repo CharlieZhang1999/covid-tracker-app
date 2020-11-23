@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete'; 
 const CountryPicker = ({handleCountryChange}) => {
     const [fetchedCountries, setFetechedCountries] = useState([]);
-    const initialOption = "";
+    const initialOption = "United States";
     const [value, setValue] = useState(initialOption);
     useEffect(() => {
         const fetchAPI = async () => {
@@ -15,8 +15,7 @@ const CountryPicker = ({handleCountryChange}) => {
         }
         fetchAPI();
     }, []);
-
-
+    
     return(
         <Autocomplete 
             value={value}

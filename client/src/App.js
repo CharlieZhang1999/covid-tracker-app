@@ -1,8 +1,8 @@
 import React from 'react';
-import { Cards, Chart,  CountryPicker, Medialoader, Reply } from './components';
+import { Cards, Chart,  CountryPicker, SIRchart, Medialoader, Reply } from './components';
 import styles from './App.module.css'
-import { fetchDailyData, fetchData, fetchPosts } from './api'
-import coronaImage from './images/image.png'
+import { fetchData, fetchPosts } from './api'
+import coronaImage from './images/image1.png'
 class App extends React.Component{
     state = {
         data: {},
@@ -44,6 +44,7 @@ class App extends React.Component{
                 <br></br>
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
                 <Chart data={data} country={country}/>
+                <SIRchart />
                 <Reply handlePostChange={this.handlePostChange.bind(this)}/> 
                 <Medialoader posts={this.state.posts}/>
             </div>
