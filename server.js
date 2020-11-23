@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 //Connect to db
 mongoose.connect(
-    process.env.MONGODB_URI, 
+    'mongodb+srv://charlie:charlie1999@cluster0.4mjjf.mongodb.net/<dbname>?retryWrites=true&w=majority', 
     { useNewUrlParser: true,
     useUnifiedTopology: true }, 
     () => {

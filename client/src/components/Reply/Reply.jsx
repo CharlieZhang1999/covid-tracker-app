@@ -1,5 +1,4 @@
 import React from 'react';
-import  Button from '@material-ui/core/Button';
 import axios from 'axios';
 import styles from './Reply.module.css';
 export default class Reply extends React.Component{
@@ -20,10 +19,12 @@ export default class Reply extends React.Component{
     }
 
     async onSubmit(e){
+        alert('here');
         e.preventDefault();
         const reply = {
             description: this.state.description
         }
+        console.log(this.state.description);
         try{
             const response = await axios({
                 url: '/posts',
@@ -32,7 +33,7 @@ export default class Reply extends React.Component{
             });
             console.log("Data has been sent to the server");
             this.resetInput();
-            this.props.handlePostChange();
+            //this.props.handlePostChange();
         }catch(err){
             console.log("Error sending to the server");
         }

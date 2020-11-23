@@ -7,24 +7,24 @@ import coronaImage from './images/image.png'
 class App extends React.Component{
     state = {
         data: {},
-        country: '',
-        posts: {},
+        country: ''
     }
 
     /* fetch data (delegate using api and function in api/index.js) */
     async componentDidMount() {
         //fetch covid data from api
         const fetchedData = await fetchData();
-        const fetechedPosts = await fetchPosts();
-        this.setState({data: fetchedData, posts: fetechedPosts});
+        //const fetechedPosts = await fetchPosts();
+        //this.setState({data: fetchedData, posts: fetechedPosts});
+        this.setState({ data: fetchedData });
     }
 
 
-    handlePostChange = async () => {
+    /*handlePostChange = async () => {
         const fetechedPosts = await fetchPosts();
         this.setState({ posts: fetechedPosts });
         //console.log(this.state);
-    }
+    }*/
 
     handleCountryChange = async (country) => {
         
@@ -36,7 +36,7 @@ class App extends React.Component{
 
 
     render(){
-        const { data, country, posts } = this.state;//equivalent to const date = this.state.data
+        const { data, country } = this.state;//equivalent to const date = this.state.data
         return (
             
             <div className={styles.container}>
@@ -46,8 +46,8 @@ class App extends React.Component{
                 <br></br>
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
                 <Chart data={data} country={country}/>
-                <Reply handlePostChange={this.handlePostChange.bind(this)}/>
-                <Medialoader posts={this.state.posts}/>  
+                <Reply />
+                
             </div>
             
         )
