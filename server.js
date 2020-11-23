@@ -23,9 +23,9 @@ app.use('/posts', postsRoute);
 
 
 //ROUTES
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.send('We are at home');
-});
+});*/
 
 //Connect to db
 mongoose.connect(
