@@ -174,36 +174,41 @@ let SIRInput =(input)=>{
 
 
 // make SIR chart 
-  const SIRChart = (
-    dailyData[0]&&prediction ? 
-    (
-      <Line
-        data={{
-          labels: getDatesBetweenDates(new Date(),new Date().setDate(new Date().getDate()+30)),
-          
-          datasets: [{
-            data: prediction.preconfirmed,
-            label: 'Infected',
-            borderColor: '#3333ff',
-            fill: true,
-          }, {
-            data: prediction.predeath,
-            label: 'Deaths',
-            borderColor: 'red',
-            backgroundColor: 'rgba(255, 0, 0, 0.5)',
-            fill: true,
-          },  {
-            data: prediction.prerecovered,
-            label: 'Recovered',
-            borderColor: 'green',
-            backgroundColor: 'rgba(0, 255, 0, 0.5)',
-            fill: true,
-          },
-          ],
-        }}
-      />
-    ) : null
-  );
+const SIRChart = (
+  dailyData[0]&&prediction ? 
+  (
+    <Line
+      data={{
+        labels: getDatesBetweenDates(new Date(),new Date().setDate(new Date().getDate()+30)),
+        
+        datasets: [{
+          data: prediction.preconfirmed,
+          label: 'Infected',
+          backgroundColor: 'rgba(54, 162, 235, 0.4)',// CHANGED
+          borderColor: 'rgba(54, 162, 235, 0.6)',// CHANGED
+          fill: true,
+        }, {
+          data: prediction.predeath,
+          label: 'Deaths',
+          borderColor: 'rgba(255, 99, 132, 0.6)',// CHANGED
+          backgroundColor: 'rgba(255, 99, 132, 1)',// CHANGED
+          fill: true,
+        },  {
+          data: prediction.prerecovered,
+          label: 'Recovered',
+          borderColor: 'rgba(255, 206, 86, 0.6)',// CHANGED
+          backgroundColor: 'rgba(255, 206, 86, 0.8)',// CHANGED
+          fill: true,
+        },
+        ],
+      }}
+      options={{
+        legend: { display: true, position:"right" },// CHANGED
+        title: { display: true, text:`SIR prediction with Customized Inputs`, fontSize:25},// CHANGED
+      }}
+    />
+  ) : null
+);
 
   let USprediction = SIRData(dailyData,300000000);
   const USSIRChart = (
@@ -216,22 +221,27 @@ let SIRInput =(input)=>{
           datasets: [{
             data: USprediction.preconfirmed,
             label: 'Infected',
-            borderColor: '#3333ff',
+            backgroundColor: 'rgba(54, 162, 235, 0.4)',// CHANGED
+            borderColor: 'rgba(54, 162, 235, 0.6)',// CHANGED
             fill: true,
           }, {
             data: USprediction.predeath,
             label: 'Deaths',
-            borderColor: 'red',
-            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 0.6)',// CHANGED
+            backgroundColor: 'rgba(255, 99, 132, 1)',// CHANGED
             fill: true,
           },  {
             data: USprediction.prerecovered,
             label: 'Recovered',
-            borderColor: 'green',
-            backgroundColor: 'rgba(0, 255, 0, 0.5)',
+            borderColor: 'rgba(255, 206, 86, 0.6)',// CHANGED
+            backgroundColor: 'rgba(255, 206, 86, 0.8)',// CHANGED
             fill: true,
           },
           ],
+        }}
+        options={{
+          legend: { display: true, position:"right" },// CHANGED
+          title: { display: true, text:`SIR prediction for US(30days)`, fontSize:25},// CHANGED
         }}
       />
     ) : null

@@ -22,22 +22,27 @@ const Chart = ({ data, country }) => {
                 datasets: [{
                     data: dailyData.map((data) => data.confirmed),
                     label: 'Infected',
-                    borderColor: '#3333ff',
+                    backgroundColor: 'rgba(54, 162, 235, 0.4)',// CHANGED
+                    borderColor: 'rgba(54, 162, 235, 0.6)',// CHANGED
                     fill: true,
                     }, {
                     data: dailyData.map((data) => data.deaths),
                     label: 'Deaths',
-                    borderColor: 'red',
-                    backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 0.6)',// CHANGED
+                    backgroundColor: 'rgba(255, 99, 132, 1)',// CHANGED
                     fill: true,
                     },  {
                         data: dailyData.map((data) => data.recovered),
                         label: 'Recovered',
-                        borderColor: 'green',
-                        backgroundColor: 'rgba(0, 255, 0, 0.5)',
+                        borderColor: 'rgba(255, 206, 86, 0.6)',// CHANGED
+                        backgroundColor: 'rgba(255, 206, 86, 0.8)',// CHANGED
                         fill: true,
                     },
                 ],
+            }}
+            options={{
+                legend: { display: true, position:"right" },// CHANGED
+                title: { display: true, text:`Current state in United States`, fontSize:50},// CHANGED
             }}
         />
         ) : null
@@ -50,17 +55,16 @@ const Chart = ({ data, country }) => {
                     labels: ['Infected', 'Recovered', 'Deaths'],
                     datasets:[{
                         labels: 'People',
-                        backgroundColor: [
-                            'rgba(0,0,255,0.5)',
-                            'rgba(0,255,0,0.5)',
-                            'rgba(255,0,0,0.5)',
-                        ],
+                        backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(255, 99, 132, 0.6)'],       // CHANGED
+                        data: [data.confirmed.value, data.recovered.value, data.deaths.value],
+                        hoverBorderColor:'rgba(250, 89, 30, 1)',// CHANGED
+                        hoverBorderWidth:5,// CHANGED
                         data: [data.confirmed.value, data.recovered.value, data.deaths.value],
                     }]
                 }}
                 options={{
                     legend: { display: false },
-                    title: { display: true, test:`Current state  in ${country}`},
+                    title: { display: true, text:`Current state in ${country}`, fontSize:50},// CHANGED
                 }}
             />
         ) : null

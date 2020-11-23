@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import  { NativeSelect, FormControl } from '@material-ui/core';
+import  { NativeSelect, FormControl, MenuItem, Select, InputLabel } from '@material-ui/core';
 import styles from './CountryPicker.module.css'
 import  { fetchCountries } from '../../api';
 
@@ -17,14 +17,6 @@ const CountryPicker = ({handleCountryChange}) => {
     }, []);
 
     console.log(fetchedCountries);
-    /*return(
-        <FormControl className={styles.formControl}>
-            <NativeSelect defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
-                <option value="">Global</option>
-                {fetchedCountries.map((country, i) => <option key={i} value={country}>{country}</option>)}
-            </NativeSelect>
-        </FormControl>
-    )*/
 
     return(
         <Autocomplete 
@@ -39,6 +31,16 @@ const CountryPicker = ({handleCountryChange}) => {
             style={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Choose a country" variant="outlined" />}
         />
+        /*<FormControl variant="outlined" className={styles.formControl}>
+            <InputLabel>Country</InputLabel>
+            <Select
+                defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}
+                label="Country"
+            >
+                <MenuItem value="">United States</MenuItem>
+                {fetchedCountries.map((country, i) => <MenuItem key={i} value={country}>{country}</MenuItem>)}
+            </Select>
+        </FormControl>*/
     );
 }
 
