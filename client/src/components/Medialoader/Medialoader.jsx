@@ -13,7 +13,7 @@ const Medialoader = (props) => {
     }, []);
 
     const fetchedposts = props.posts;
-
+    console.log(fetchedposts);
     const res = (
         fetchedposts.length? (
             // select the last 5 comments
