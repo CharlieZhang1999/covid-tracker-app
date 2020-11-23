@@ -15,7 +15,7 @@ const Cards = ({ data: {confirmed, recovered, deaths, lastUpdate } })  => {
 
     return(
         //the Typography is the place for us to fill in the text or content
-        <div style={{width:"80%", columnCount:3, borderTop:20,borderBottom:2000}}>
+        <div style={{width:"80%", height:"300px", columnCount:3, borderTop:20,borderBottom:2000}}>
             {/* <Grid container spacing={3} justify="center">
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
                     <CardContent>
@@ -53,7 +53,7 @@ const Cards = ({ data: {confirmed, recovered, deaths, lastUpdate } })  => {
 
 
                         <div>
-                        <Typography color="textSecondary" gutterBottom>Infected</Typography>
+                        <Typography style={{color:"rgba(54, 162, 235, 1)", fontSize:"45px"}}>Infected</Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={confirmed.value} duration={2.5} separator=","/>
                         </Typography>
@@ -62,18 +62,16 @@ const Cards = ({ data: {confirmed, recovered, deaths, lastUpdate } })  => {
                         </div>
 
                         <div>
-                        <Typography color="textSecondary" gutterBottom>Recovered</Typography>
+                        <Typography  style={{color:"rgba(255, 206, 86, 1)", fontSize:"45px"}}>Recovered</Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={recovered.value} duration={2.5} separator=","/>
                         </Typography>
                         <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                         <Typography variant="body2">Number of recoveries of COVID-19</Typography>
-
-
-
                         </div>
+
                         <div>
-                        <Typography color="textSecondary" gutterBottom>Deaths</Typography>
+                        <Typography style={{color:"rgba(255, 99, 132, 1)", fontSize:"45px"}}>Deaths</Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={deaths.value} duration={2.5} separator=","/>
                         </Typography>
