@@ -26,7 +26,7 @@ export default class Reply extends React.Component{
         }
         try{
             const response = await axios({
-                url: '/posts',
+                url: 'https://covid-app-1122-v2.herokuapp.com/posts',
                 method: 'POST',
                 data: reply
             });

@@ -59,7 +59,7 @@ export const fetchCountries = async() => {
 
 export const fetchPosts = async() => {
     try{
-        const response = await axios.get('/posts');
+        const response = await axios.get('https://covid-app-1122-v2.herokuapp.com/posts');
         return response.data;
     }catch(error){
         console.log(error);
