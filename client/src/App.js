@@ -1,7 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import { Cards, Chart,  CountryPicker, Reply } from './components';
-//import { Cards, Chart,  CountryPicker, Medialoader, Reply } from './components';
+import { Cards, Chart,  CountryPicker, Medialoader, Reply } from './components';
 import styles from './App.module.css'
 import { fetchDailyData, fetchData, fetchPosts } from './api'
 import coronaImage from './images/image.png'
@@ -24,7 +22,6 @@ class App extends React.Component{
     handlePostChange = async () => {
         const fetechedPosts = await fetchPosts();
         this.setState({ posts: fetechedPosts });
-        //console.log(this.state);
     }
 
     handleCountryChange = async (country) => {
@@ -48,6 +45,7 @@ class App extends React.Component{
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
                 <Chart data={data} country={country}/>
                 <Reply handlePostChange={this.handlePostChange.bind(this)}/> 
+                <Medialoader posts={this.state.posts}/>
             </div>
             
         )

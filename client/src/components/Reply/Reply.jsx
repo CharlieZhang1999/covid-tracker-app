@@ -35,12 +35,7 @@ export default class Reply extends React.Component{
             
 
             //try
-            const response_2 = await axios({
-                url: '/posts',
-                method: 'GET',
-            });
-            console.log(response_2.data);
-            //cthis.props.handlePostChange();
+            this.props.handlePostChange();
         }catch(err){
             console.log("Error sending to the server");
         }

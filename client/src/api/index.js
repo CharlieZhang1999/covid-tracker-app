@@ -59,7 +59,10 @@ export const fetchCountries = async() => {
 
 export const fetchPosts = async() => {
     try{
-        const response = await axios.get('/posts');
+        const response = await axios({
+            url: '/posts',
+            method: 'GET',
+        });
         return response.data;
     }catch(error){
         console.log(error);
