@@ -28,7 +28,7 @@ class App extends React.Component{
 
 
     render(){
-        const { data, country } = this.state;//equivalent to const date = this.state.data
+        const { data, country } = this.state; //equivalent to const date = this.state.data
         return (
             
             <div className={styles.container}>
