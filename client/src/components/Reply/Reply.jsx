@@ -32,7 +32,7 @@ export default class Reply extends React.Component{
             });
             console.log("Data has been sent to the server");
             this.resetInput();
-            this.props.handlePostChange();
+            //this.props.handlePostChange();
         }catch(err){
             console.log("Error sending to the server");
         }
