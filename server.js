@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use('/posts', postsRoute);
 
 
-//ROUTES
+//ROUTES 
 app.get('/', (req, res) => {
     res.send('We are at home');
 });
