@@ -6,6 +6,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv/config'); // For privacy use
 
+app.use(cors());
+
 
 //To Client
 if(process.env.NODE_ENV === 'production'){
@@ -15,16 +17,15 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-
 //Import Routes
 const postsRoute = require('./routes/posts');
 
 //Middlewares
 /* whenever goes to the link specified in use, it will run the
 following middleware function */
-app.use(cors());
 app.use(bodyParser.json());
 app.use('/posts', postsRoute);
+
 
 //ROUTES
 app.get('/', (req, res) => {
@@ -33,7 +34,7 @@ app.get('/', (req, res) => {
 
 //Connect to db
 mongoose.connect(
-    'mongodb://localhost/covid' || process.env.MONGODB_URI, 
+    process.env.MONGODB_URI, 
     { useNewUrlParser: true,
     useUnifiedTopology: true }, 
     () => {
