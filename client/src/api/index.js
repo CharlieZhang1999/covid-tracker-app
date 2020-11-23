@@ -59,7 +59,7 @@ export const fetchCountries = async() => {
 
 export const fetchPosts = async() => {
     try{
-        const response = await axios.get('http://localhost:8080/posts');
+        const response = await axios.get('/posts');
         return response.data;
     }catch(error){
         console.log(error);

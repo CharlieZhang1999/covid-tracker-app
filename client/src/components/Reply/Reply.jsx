@@ -26,7 +26,7 @@ export default class Reply extends React.Component{
         }
         try{
             const response = await axios({
-                url: 'http://localhost:5000/posts',
+                url: '/posts',
                 method: 'POST',
                 data: reply
             });
