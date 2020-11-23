@@ -28,7 +28,7 @@ class App extends React.Component{
 
     handleCountryChange = async (country) => {
         
-        //fetch the data
+        //fetch the data 
         const fetchedData = await fetchData(country);
         //set the state
         this.setState({ data: fetchedData, country: country });
