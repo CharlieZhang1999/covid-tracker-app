@@ -8,8 +8,10 @@ const Post = require('../models/Post');
 router.get('/', async (req, res) => {
     try{
         const posts = await Post.find();
+        console.log(posts);
         res.json(posts);
     }catch(err){
+        console.log("here");
         res.json({message: err});
     }
 })
