@@ -22,10 +22,7 @@ app.use(bodyParser.json());
 app.use('/posts', postsRoute);
 
 
-//ROUTES
-/*app.get('/', (req, res) => {
-    res.send('We are at home');
-});*/
+//ROUTES 
 
 //Connect to db
 mongoose.connect(
