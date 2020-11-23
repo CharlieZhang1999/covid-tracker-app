@@ -40,6 +40,7 @@ const SIRchart=()=>{
     const newValue = parseInt(evt.target.value);
     setUserInput({[name]: newValue});
   }
+
 //handle the submit button for form
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -252,9 +253,21 @@ const SIRChart = (
         <div className={styles.container}>
             {USSIRChart}
             <br/>
+            <div className={styles.textContainer}>
+                <h2>Customizable SIR model</h2>
+                <p>
+                You could also customize the model by entering certain inputs regarding to any area you are interested in. By providing 
+                the local population, the total confirmed cases for both today and 14 days ago, as well as the current total recovered and 
+                death counts, the chart on the right will output a automatic graph showing the predictions of local confirmed, death, and 
+                recovered counts for next 30 days.
+                </p>
+                </div>
             <div className={styles.inputs}>
+              
               {SIRForm}
               {SIRChart}  
+              
+              
             </div>  
             
         </div>

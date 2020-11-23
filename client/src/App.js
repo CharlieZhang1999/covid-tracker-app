@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cards, Chart,  CountryPicker, SIRchart, Medialoader, Reply } from './components';
+import { Cards, Chart,  CountryPicker, SIRchart, Medialoader, Reply,Login } from './components';
 import styles from './App.module.css'
 import { fetchData, fetchPosts } from './api'
 import coronaImage from './images/image1.png'
@@ -44,9 +44,22 @@ class App extends React.Component{
                 <br></br>
                 <CountryPicker handleCountryChange={this.handleCountryChange} />
                 <Chart data={data} country={country}/>
+                <div className={styles.textContainer}> 
+                <h2>SIR model Introduction</h2>
+                <p>SIR model is an epidemiological model that computes the theoretical number of people infected with a contagious 
+                    illness in a closed population over time. The name “SIR” derives from the fact that they involve coupled equations 
+                    relating the number of susceptible people St, number of people infected It, and number of people who have been 
+                    removed (recovered or death) Rt. Here we apply the discrete SIR model on the recent covid-19 data of United States 
+                    to provide a rough prediction of the total confirmed, recovered, and death counts in the next 30 days.</p>
+                </div>
+                
                 <SIRchart />
+                
+                
                 <Reply handlePostChange={this.handlePostChange.bind(this)}/> 
+                
                 <Medialoader posts={this.state.posts}/>
+                
             </div>
             
         )

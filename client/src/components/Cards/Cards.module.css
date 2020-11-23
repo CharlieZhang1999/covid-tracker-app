@@ -3,7 +3,11 @@
 .card{
     margin: 0 2% !important;
 }
-
+.container {
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 165px;
+}
 .infected {
     border-bottom: 10px solid rgba(54, 162, 235, 0.6); /*changed here*/
 }

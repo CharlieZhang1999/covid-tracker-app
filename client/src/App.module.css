@@ -9,6 +9,13 @@ body{
     flex-direction: column;
 }
 
+.textContainer{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    width:1000px;
+}
 .image{
     width: 370px;
     margin: 10% 0;

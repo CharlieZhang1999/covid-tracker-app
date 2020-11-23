@@ -4,3 +4,4 @@ export { default as CountryPicker } from './CountryPicker/CountryPicker';
 export { default as SIRchart } from './SIR/SIR';
 export { default as Medialoader } from './Medialoader/Medialoader';
 export { default as Reply } from './Reply/Reply';
+export { default as Login } from './Login/Login';
