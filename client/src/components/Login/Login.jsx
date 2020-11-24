@@ -1,5 +1,6 @@
 import React, {useState, useEffect,useReducer } from 'react';
 import axios from 'axios';
+import styles from './Login.module.css';
 const Login = (props) => {
 
     const [loginInput, setLoginInput] = useReducer(
@@ -51,9 +52,36 @@ const Login = (props) => {
       }
       );
     }
+    let [regWindow,setRegWindow] = useState(false);
+
+    let handleToRegChange = ()=>{
+      setRegWindow(!regWindow);
+    }
+  
+    function changeBackgroundOn(e) {
+      e.target.style.color = "grey";
+    }
+    function changeBackgroundLeave(e) {
+      e.target.style.color = 'black';
+    }
+
+    let [showLogin,setShowLogin]=useState(false);
+
+    let handleShowLoginChange = ()=>{
+      setShowLogin(true);
+    }
+    
+    let loginButton = (
+      <h3 style={{marginTop:100}} className={styles.registerText} onMouseOver={changeBackgroundOn} onMouseLeave={changeBackgroundLeave} 
+            onClick={handleShowLoginChange}>Log in to leave a comment below</h3>
+    )
+
     const LoginForm = (
+      showLogin?(
         <form onSubmit={handleLoginSubmit}>
             <div>
+              <br/>
+              <h2>Login</h2>
               <br/>
                 <label>UserName</label>
               <br/>
@@ -64,8 +92,12 @@ const Login = (props) => {
                 <input type="text" name="Password" value={loginInput.Password} onChange={handleLoginChange}/>
               <br/>
                 <input type="submit" value="Submit"/>
+                <p>Don't have an account?</p>
+                <p className={styles.registerText} onMouseOver={changeBackgroundOn} onMouseLeave={changeBackgroundLeave} 
+            onClick={handleToRegChange}>Register here</p>
             </div>
-        </form>)
+        </form>
+        ):null)
 
 const [RegisterInput, setRegisterInput] = useReducer(
     (state, newState) => ({...state, ...newState}),
@@ -98,14 +130,13 @@ const [RegisterInput, setRegisterInput] = useReducer(
         data: registerInfo
       });
       // if success
-      console.log("sucess");
+      console.log("success");
     }catch(error){
       console.log(error);
       seterrorMessage(true);
     }
-
-
 }
+
   const resetRegisterinput = () => {
     setRegisterInput(
       {
@@ -116,9 +147,12 @@ const [RegisterInput, setRegisterInput] = useReducer(
     );
   }
 
+
 const RegisterForm = (
     <form onSubmit={handleRegisterSubmit}>
         <div>
+          <br/>
+            <h2>Register</h2>
           <br/>
             <label>UserName</label>
           <br/>
@@ -133,22 +167,24 @@ const RegisterForm = (
             <input type="text" name="RePassword" value={RegisterInput.RePassword} onChange={handleRegisterChange}/>
           <br/>
             <input type="submit" value="Submit"/>
+            <p className={styles.registerText} onMouseOver={changeBackgroundOn} onMouseLeave={changeBackgroundLeave} 
+            onClick={handleToRegChange}>Back to Login</p>
         </div>
     </form>)
 
     const errorNote = (
       <p style={{"color": "red"}}>Error during login or registration</p>
     )
+    
+    
 
     return(
         <div>
-            <h1>login window</h1>
-            {LoginForm}
-            <h1>Register window</h1>
-            {RegisterForm}
+            {loginButton}
+            {regWindow? RegisterForm: LoginForm}
             {errorMessage?errorNote:null}
         </div>
-        
+      
     );
 }
 
