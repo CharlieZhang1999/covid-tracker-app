@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
         return;
     }
     const post = new Post({
+        user: req.session.user,
         description: req.body.description,
     });
     post.save()
@@ -59,6 +60,18 @@ router.delete('/:postId', async (req, res)=> {
     }
     
 });
+
+//DELETE ALL POSTS
+router.delete('/', async (req , res) => {
+    try{
+        const removedallPosts = await Post.deleteMany({});
+        res.json(removedPost);
+        return;
+    }catch(err){
+        res.json({message: err});
+        return;
+    }
+})
 
 //UPDATE A POST
 router.patch('/:postId', async (req, res) => {

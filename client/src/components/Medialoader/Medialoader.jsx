@@ -23,10 +23,11 @@ const Medialoader = (props) => {
                         <Paper className={styles.paper}>
                             <Grid container wrap="nowrap" spacing={3}>
                                 <Grid item>
-                                    <Avatar>W</Avatar>
+                                    <Avatar>{post.user.charAt(0)}</Avatar>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant="h6">{post.description} </Typography>
+                                    <Typography variant="h6" style={{fontWeight: 'bold'}}>{post.user} </Typography>
+                                    <p>{post.description} </p>
                                 </Grid>
                             </Grid>
                         </Paper>
