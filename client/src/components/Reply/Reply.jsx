@@ -37,7 +37,7 @@ export default class Reply extends React.Component{
             //try
             this.props.handlePostChange();
         }catch(err){
-            console.log("Error sending to the server");
+            console.log("Error or unauthorized");
         }
     }
     resetInput(){
