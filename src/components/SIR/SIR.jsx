@@ -262,14 +262,14 @@ let SIRInput =(input)=>{
         // </div>
 
         <div className={styles.container}>
-        <div style = {{borderRightColor:'rgba(84, 255, 204, 0.5)', borderRightStyle: "solid"}}>
+        <div style = {{borderRightColor:'rgba(84, 255, 204, 0.5)', borderRightStyle: "dotted", textAlign:"center"}}>
           {USSIRChart}
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod atque, cum tempore obcaecati, non quas corrupti autem repellendus dolore veritatis sed ullam alias quae nulla maiores eos laborum illo reiciendis.lere Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ratione praesentium itaque inventore obcaecati quaerat corrupti aliquam error optio doloribus. Eaque quae quia eos sapiente praesentium in placeat deleniti reiciendis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore facere impedit iste quibusdam quia nobis natus atque minima laudantium harum officia hic accusantium, suscipit ullam quaerat at quis aliquam ducimus.</p>
         </div>
         
         
         {SIRForm}
-        <div>
+        <div style={{textAlign:"center"}}>
           {SIRChart}
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptatum veritatis quos id necessitatibus beatae distinctio odit quia quo fugiat fugit molestiae, facilis vitae similique quidem aperiam optio laborum ipsum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis reprehenderit quidem recusandae esse dolor, aut quam dolores a error ea inventore adipisci, saepe odit numquam mollitia eligendi sit. Velit, voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quis maiores nihil non aspernatur et, dolores optio tenetur, vel voluptatum hic autem at. Voluptatibus labore error nisi doloremque aliquam. Voluptatibus?</p>
         </div>
