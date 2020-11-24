@@ -8,6 +8,7 @@ class App extends React.Component{
         data: {},
         country: '',
         posts: {},
+        loggedin: false
     }
 
     /* fetch data (delegate using api and function in api/index.js) */
@@ -30,6 +31,10 @@ class App extends React.Component{
         const fetchedData = await fetchData(country);
         //set the state
         this.setState({ data: fetchedData, country: country });
+    }
+
+    handleLoggedIn = async () => {
+        this.setState({ loggedin: true });
     }
 
 
@@ -55,7 +60,7 @@ class App extends React.Component{
                 
                 <SIRchart />
                 
-                
+                {this.state.loggedin? null : <Login handleLoggedIn={this.handleLoggedIn.bind(this)}/> }
                 <Reply handlePostChange={this.handlePostChange.bind(this)}/> 
                 
                 <Medialoader posts={this.state.posts}/>

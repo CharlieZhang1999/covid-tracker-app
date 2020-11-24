@@ -8,10 +8,9 @@ const Post = require('../models/Post');
 router.get('/', async (req, res) => {
     try{
         const posts = await Post.find();
-        res.json(posts);
+        return res.json(posts);
     }catch(err){
-        console.log("here");
-        res.json({message: err});
+        return res.json({message: err});
     }
 })
 
@@ -20,14 +19,18 @@ router.get('/', async (req, res) => {
 router.get('/:postId', async (req, res) => {
     try{
         const post = await Post.findById(req.params.postId);
-        res.json(post);
+        return res.json(post);
     }catch(err){
-        res.json({message: err});
+        return res.json({message: err});
     }
 })
 
 //SUBMIT A POST
 router.post('/', (req, res) => {
+    if(req.session.user == undefined){
+        res.status(403).send("Unauthorized");
+        return;
+    }
     const post = new Post({
         description: req.body.description,
     });
@@ -35,11 +38,12 @@ router.post('/', (req, res) => {
         .then(data => {
             console.log('Post has been saved');
             res.json(data);
-            
+            return; 
         })
         .catch(err => {
             console.log('Oops, something is wrong and post failed')
             res.json({message: err});
+            return;
         })
 });
 
@@ -48,8 +52,10 @@ router.delete('/:postId', async (req, res)=> {
     try{
         const removedPost = await Post.remove({_id: req.params.postId});
         res.json(removedPost);
+        return;
     }catch(err){
         res.json({message: err});
+        return;
     }
     
 });
@@ -62,8 +68,10 @@ router.patch('/:postId', async (req, res) => {
             { $set: { description: req.body.description } }
         );
         res.json(updatedPost);
+        return;
     } catch (err){
         res.json({message: err});
+        return;
     }
 })
 

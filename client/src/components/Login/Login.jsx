@@ -1,6 +1,6 @@
 import React, {useState, useEffect,useReducer } from 'react';
-
-const Login = () => {
+import axios from 'axios';
+const Login = (props) => {
 
     const [loginInput, setLoginInput] = useReducer(
         (state, newState) => ({...state, ...newState}),
@@ -10,6 +10,8 @@ const Login = () => {
         }
       );
 
+      const [errorMessage, seterrorMessage] = useState(false);
+
     // handle the form inputs
       const handleLoginChange = evt => {
         
@@ -18,10 +20,37 @@ const Login = () => {
         setLoginInput({[name]: newValue});
       }
     //handle the submit button for form
-      const handleLoginSubmit = (evt) => {
+      const handleLoginSubmit = async (evt) => {
         evt.preventDefault();
+        const loginInfo = {
+          username: loginInput.UserName,
+          password: loginInput.Password
+        };
+        resetLoginInput();
+        try{
+          const response = await axios({
+            url: '/login',
+            method: 'POST',
+            data: loginInfo
+          });
+          // if success
+          props.handleLoggedIn();
+          console.log("already logged in");
+        }
+        catch(error){
+          console.log(error);
+          seterrorMessage(true);
+        }
     }
 
+    const resetLoginInput = () => {
+      setLoginInput(
+        {
+          UserName:'',
+          Password:'',
+      }
+      );
+    }
     const LoginForm = (
         <form onSubmit={handleLoginSubmit}>
             <div>
@@ -55,9 +84,37 @@ const [RegisterInput, setRegisterInput] = useReducer(
     setRegisterInput({[name]: newValue});
   }
 //handle the submit button for form
-  const handleRegisterSubmit = (evt) => {
+  const handleRegisterSubmit = async (evt) => {
     evt.preventDefault();
+    const registerInfo = {
+      username: RegisterInput.UserName,
+      password: RegisterInput.Password
+    };
+    resetRegisterinput();
+    try{
+      const response = await axios({
+        url: '/login/register',
+        method: 'POST',
+        data: registerInfo
+      });
+      // if success
+      console.log("sucess");
+    }catch(error){
+      console.log(error);
+      seterrorMessage(true);
+    }
+
+
 }
+  const resetRegisterinput = () => {
+    setRegisterInput(
+      {
+        UserName:'',
+        Password:'',
+        RePassword:'',
+    }
+    );
+  }
 
 const RegisterForm = (
     <form onSubmit={handleRegisterSubmit}>
@@ -79,12 +136,17 @@ const RegisterForm = (
         </div>
     </form>)
 
+    const errorNote = (
+      <p style={{"color": "red"}}>Error during login or registration</p>
+    )
+
     return(
         <div>
             <h1>login window</h1>
             {LoginForm}
             <h1>Register window</h1>
             {RegisterForm}
+            {errorMessage?errorNote:null}
         </div>
         
     );
