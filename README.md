@@ -4,6 +4,10 @@
 
 ### URL
 https://covid-app-1122-v3.herokuapp.com/
+This app is on the branch "qyc1123".
+
+### Branch
+"qyc1123" branch is the final version of our app.
 
 ### Frontend
 We use React.js as our frontend. 
@@ -17,9 +21,9 @@ We make use of Mongodb and express in our backend.
 Heroku is used to deploy our app.
 
 ### Contributors
-Qiuyang Zhang
-Yichen Qiu
-Qinghui Zeng
+Qiuyang Zhang <br />
+Yichen Qiu  <br />
+Qinghui Zeng <br />
 
 
 
