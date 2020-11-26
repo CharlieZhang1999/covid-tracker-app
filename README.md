@@ -15,6 +15,8 @@ We use React.js as our frontend.
 ### Backend
 We make use of Mongodb and express in our backend. 
 
+### API
+This api is our data source: https://covid19.mathdro.id/api
 
 ### Deployment
 
